@@ -26,7 +26,6 @@ router.get("/", async (req, res, next) => {
                         t.origin, \
                         t.dest, \
                         t.price, \
-                        a.`airline`, \
                         f.dep_time, \
                         f.arr_time, \
                         fh.avg_delay, \
