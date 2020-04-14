@@ -21,10 +21,10 @@ router.get("/", async (req, res, next) => {
                         fh.delayed_pct, \
                         fh.avg_delay \
                     from \
-                        innodb_schema.trips tr inner join  \
-                        innodb_schema.tickets t on tr.ticket_id = t.id inner join \
-                        innodb_schema.airlines a on t.carrier = a.iata_code, \
-                        (select * from innodb_schema.flights where year >= 2020) f, \
+                        travel.trips tr inner join  \
+                        travel.tickets t on tr.ticket_id = t.id inner join \
+                        travel.airlines a on t.carrier = a.iata_code, \
+                        (select * from travel.flights where year >= 2020) f, \
                         (select  \
                             a.avg_delay, \
                             round(100 * (a.`delayed` / a.volume), 2) delayed_pct, \
@@ -42,11 +42,11 @@ router.get("/", async (req, res, next) => {
                                 month, \
                                 day \
                             from  \
-                                columnstore_schema.flights \
+                                travel_history.flights \
                             where \
                                 year >= 2014 and \
-                                month in (select month(fl_date) from innodb_schema.trips tr inner join innodb_schema.tickets t on tr.ticket_id = t.id) and \
-                                day in (select day(fl_date) from innodb_schema.trips tr inner join innodb_schema.tickets t on tr.ticket_id = t.id) \
+                                month in (select month(fl_date) from travel.trips tr inner join travel.tickets t on tr.ticket_id = t.id) and \
+                                day in (select day(fl_date) from travel.trips tr inner join travel.tickets t on tr.ticket_id = t.id) \
                             group by  \
                                 day, \
                                 month, \
