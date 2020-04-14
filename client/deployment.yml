@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: bookings-ui-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: bookings-ui  
+    spec:     # pod spec                  
+      containers: 
+      - name: bookings-ui 
+        image: gcr.io/mariadb-technical-marketing/bookings-ui-image:v1 # image we pushed
+        ports:
+        - containerPort: 80
