@@ -119,14 +119,28 @@ export default class FlightSearch extends Component {
                 code: selectedDestinationOption.value,
                 name: selectedDestinationOption.label
             },
-            originDepartureDate: this.state.originDepartureDate
+            originDepartureDate: this.formatDate(this.state.originDepartureDate)
         };
 
         if (this.state.type === 1) {
-            params.destinationDepartureDate = this.state.destinationDepartureDate
+            params.destinationDepartureDate = this.formatDate(this.state.destinationDepartureDate)
         }
 
         this.props.executeSearch(params);
+    }
+
+    formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
     }
 
     renderAirportOptions(selectedOption, handleChange) {
@@ -178,7 +192,10 @@ export default class FlightSearch extends Component {
                                     <p>Departing</p>
                                     <div>
                                         <img className="float-left" src={calendar} alt="cal" />     
-                                        <DatePicker className="datepicker float-left" selected={this.state.originDepartureDate} onChange={this.handleOriginDepartureDateChange} />
+                                        <DatePicker 
+                                            className="datepicker float-left" 
+                                            selected={this.state.originDepartureDate} 
+                                            onChange={this.handleOriginDepartureDateChange} />
                                         <div style={{clear: "both"}} />
                                     </div>
                                 </div>
