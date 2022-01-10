@@ -14,9 +14,7 @@ This README will walk you through the steps for getting the Bookings web applica
 
 # Table of Contents
 1. [Requirements](#requirements)
-2. [Introduction to MariaDB](#introduction)
-    1. [MariaDB Platform](#platform)
-    2. [MariaDB SkySQL](#skysql)
+2. [Getting started with MariaDB](#introduction)
 3. [Get the code](#code)
 4. [Set up the HTAP database instance](#getting-started)
     1. [Get the data, create the schema, and load the data](#data)
@@ -38,7 +36,7 @@ This sample application, no matter which API project you target, will requires t
 * [MariaDB Client](https://mariadb.com/products/skysql/docs/clients/), used to connect to MariaDB instances.
 * [Bash](https://www.gnu.org/software/bash/) (if you are using Windows 10, you will need to enable the Windows Subsystem for Linux), used to run the data download script
 
-## Introduction to MariaDB <a name="introduction"></a>
+## Getting started with MariaDB <a name="introduction"></a>
 
 [MariaDB](https://mariadb.com) is a community-developed, commercially supported relational database management system, and the database you'll be using for this application.
 
